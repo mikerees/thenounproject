@@ -1,0 +1,21 @@
+{
+  "name": "The Noun Project API Wrapper",
+  "description": "A small PSR-4 compliant wrapper for The Noun Project API",
+  "license": "MIT",
+  "authors": {
+    "name": "Mike Rees",
+    "email": "mike@tatelu.com",
+    "homepage": "http://github.com/mikerees"
+  },
+
+  "require": {
+
+  } ,
+
+  "autoload": {
+    "psr-4": {
+       "MikeRees\\TheNounProject\\": "src/"
+    }
+  }
+
+}
