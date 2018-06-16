@@ -2,14 +2,14 @@
   "name": "The Noun Project API Wrapper",
   "description": "A small PSR-4 compliant wrapper for The Noun Project API",
   "license": "MIT",
-  "authors": {
+  "authors": [{
     "name": "Mike Rees",
     "email": "mike@tatelu.com",
     "homepage": "http://github.com/mikerees"
-  },
+  }],
 
   "require": {
-
+    "vlucas/phpdotenv": "^2.4"
   } ,
 
   "autoload": {
