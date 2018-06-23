@@ -3,7 +3,7 @@
 namespace MikeRees\TheNounProject\Models;
 
 
-class AbstractModel
+class AbstractRequestModel
 {
 
     /**
