@@ -10,8 +10,23 @@ use MikeRees\TheNounProject\Interfaces\RequestInterface;
 use MikeRees\TheNounProject\Models\AbstractModel;
 use MikeRees\TheNounProject\Responses\AbstractResponse;
 
-abstract class AbstractRequest implements RequestInterface, \ArrayAccess
+abstract class AbstractRequest
 {
+
+    /**
+     * const append request parameters as a query string
+     */
+    const MODE_QUERY_STRING = 0<<0;
+
+    /**
+     * const append request parameters to the URI
+     */
+    const MODE_URI_APPEND = 0<<1;
+
+    /**
+     * @var integer which mode the API endpoint uses to send the request
+     */
+    protected $mode;
 
     /**
      * @var \MikeRees\TheNounProject\Models\AbstractModel
