@@ -14,38 +14,69 @@ abstract class AbstractRequest implements RequestInterface, \ArrayAccess
 {
 
     /**
-     * @var AbstractModel
+     * @var \MikeRees\TheNounProject\Models\AbstractModel
      */
     protected $requestModel;
 
+    /**
+     * @var \MikeRees\TheNounProject\Responses\AbstractResponse
+     */
     protected $response;
 
+    /**
+     * @var \GuzzleHttp\Client
+     */
     private $client;
 
+    /**
+     * @var \GuzzleHttp\Subscriber\Oauth\Oauth1
+     */
     private $oauth;
 
+    /**
+     * @var bool
+     */
     private $initialised;
 
+    /**
+     * AbstractRequest constructor.
+     * Set initialised to false upon construction.
+     */
     public function __construct()
     {
         $this->initialised = false;
     }
 
+    /**
+     * Populate the request model
+     * @return void
+     */
     abstract function buildRequest();
 
+    /**
+     * Populate the response object.
+     * @param $response
+     * @return void
+     */
+    abstract function buildResponse($response);
+
+    /**
+     * Build the connection then send the request to the API.
+     */
     public function makeRequest()
     {
         $this->buildConnection();
 
         $response = $this->client->get($this->requestModel->uri, $this->requestModel->toArray());
 
+        $this->buildResponse($response);
 
 
     }
 
     /**
      * Get the Response model.
-     * @return MikeRees\TheNounProject\Responses\AbstractResponse
+     * @return \MikeRees\TheNounProject\Responses\AbstractResponse
      */
     public function getResponse()
     {
